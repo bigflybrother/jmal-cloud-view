@@ -40,7 +40,7 @@ module.exports = {
     *在大多数情况下，请使用'/'！
     *详细信息：https://cli.vuejs.org/config/#publicpath
   */
-  publicPath: '/',
+  publicPath: '/jmal-cloud-view/',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: false,
