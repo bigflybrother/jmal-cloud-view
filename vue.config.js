@@ -33,13 +33,13 @@ const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 
 module.exports = {
 
-/**
-  *如果您打算在子路径下部署网站，则需要设置publicPath，
-  *例如GitHub Pages。如果您打算将网站部署到https://foo.github.io/bar/，
-  *然后publicPath应该设置为“ / bar /”。
-  *在大多数情况下，请使用'/'！
-  *详细信息：https://cli.vuejs.org/config/#publicpath
-*/
+  /**
+    *如果您打算在子路径下部署网站，则需要设置publicPath，
+    *例如GitHub Pages。如果您打算将网站部署到https://foo.github.io/bar/，
+    *然后publicPath应该设置为“ / bar /”。
+    *在大多数情况下，请使用'/'！
+    *详细信息：https://cli.vuejs.org/config/#publicpath
+  */
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
@@ -54,7 +54,7 @@ module.exports = {
     },
     proxy: {
       [process.env.VUE_APP_BASE_API]: {
-        target: 'http://localhost:8088',
+        target: 'https://10.47.51.221:8080',
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
@@ -79,12 +79,12 @@ module.exports = {
     config.plugin('monaco-editor').use(MonacoWebpackPlugin, [
       {
         languages: [
-          "json","abap", "apex", "azcli", "bat", "cameligo","clojure", "coffee", "cpp", "yaml",
-          "csharp", "csp", "css","dockerfile", "fsharp", "go", "graphql", "handlebars","html", "ini",
-          "java", "javascript", "kotlin", "less","lua", "markdown", "mips", "msdax", "mysql", "objective-c",
-          "pascal", "pascaligo", "perl", "pgsql", "php", "postiats","powerquery", "powershell", "pug", "python",
-          "r", "razor","redis", "redshift", "restructuredtext", "ruby", "rust","sb", "scheme", "scss",
-          "shell", "solidity", "sophia", "sql","st", "swift", "tcl", "twig", "typescript", "vb",
+          "json", "abap", "apex", "azcli", "bat", "cameligo", "clojure", "coffee", "cpp", "yaml",
+          "csharp", "csp", "css", "dockerfile", "fsharp", "go", "graphql", "handlebars", "html", "ini",
+          "java", "javascript", "kotlin", "less", "lua", "markdown", "mips", "msdax", "mysql", "objective-c",
+          "pascal", "pascaligo", "perl", "pgsql", "php", "postiats", "powerquery", "powershell", "pug", "python",
+          "r", "razor", "redis", "redshift", "restructuredtext", "ruby", "rust", "sb", "scheme", "scss",
+          "shell", "solidity", "sophia", "sql", "st", "swift", "tcl", "twig", "typescript", "vb",
           "xml",
         ]
       }
@@ -130,7 +130,7 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+              // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
             .end()
