@@ -1,12 +1,11 @@
 'use strict'
 const path = require('path')
-const defaultSettings = require('./src/settings.js')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || 'jmalCloud' // page title
+const name = '特赞云' // page title
 
 //如果您的端口设置为80，
 //使用管理员权限执行命令行。
@@ -40,7 +39,7 @@ module.exports = {
     *在大多数情况下，请使用'/'！
     *详细信息：https://cli.vuejs.org/config/#publicpath
   */
-  publicPath: '/jmal-cloud-view/',
+  publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: false,

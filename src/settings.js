@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'JmalCloud',
+  title: '特赞云',
 
   /**
    * @type {boolean} true | false
