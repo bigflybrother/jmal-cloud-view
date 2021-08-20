@@ -4,7 +4,8 @@
       :defaultGrid="true"
       :orderCustom="true"
       :contextMenus="contextMenus"
-      :sortable="sortable">
+      :sortable="sortable"
+    >
     </show-file>
   </div>
 </template>
@@ -13,35 +14,34 @@
 import ShowFile from "@/components/ShowFile/ShowFile";
 
 export default {
-  components: {ShowFile},
+  components: { ShowFile },
   data() {
     return {
       sortable: {
-        prop: 'name', order: 'ascending'
+        prop: "name",
+        order: "ascending"
       },
-      contextMenus: [ // contextmenuClick
-        { label: '查看', operation: 'viewMode' ,child: [
-            { iconClass: this.grid?'':'menu-point', label: '列表', operation: 'vmode-list'},
-            { iconClass: this.grid?'menu-point':'', label: '缩略图', operation: 'vmode-grid'},
-          ]
-        },
-        { label: '排列方式', operation: 'arrangement' ,child: [
-            { label: '名称', operation: 'orderName', orderProp: 'name'},
-            { label: '大小', operation: 'orderSize', orderProp: 'size'},
-            { label: '日期', operation: 'orderUpdateDate', orderProp: 'updateDate'},
-          ]
-        },
-        { label: '刷新', operation: 'refresh'},
-        { divider: true, operation: 'divider' },
-        { label: '写文章', operation: 'createMarkdownFile'},
-        { label: '新建文件', operation: 'createTextFile'},
+      contextMenus: [
+        // contextmenuClick
+        // { label: '查看', operation: 'viewMode' ,child: [
+        //     { iconClass: this.grid?'':'menu-point', label: '列表', operation: 'vmode-list'},
+        //     { iconClass: this.grid?'menu-point':'', label: '缩略图', operation: 'vmode-grid'},
+        //   ]
+        // },
+        // { label: '排列方式', operation: 'arrangement' ,child: [
+        //     { label: '名称', operation: 'orderName', orderProp: 'name'},
+        //     { label: '大小', operation: 'orderSize', orderProp: 'size'},
+        //     { label: '日期', operation: 'orderUpdateDate', orderProp: 'updateDate'},
+        //   ]
+        // },
+        { label: "刷新", operation: "refresh" }
+        // { divider: true, operation: 'divider' },
+        // { label: '写文章', operation: 'createMarkdownFile'},
+        // { label: '新建文件', operation: 'createTextFile'},
       ]
-    }
-  },
-}
+    };
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
-
+<style lang="scss" scoped></style>

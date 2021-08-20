@@ -1,25 +1,25 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
-    <breadcrumb class="breadcrumb-container" />
-
     <div class="right-content">
       <app-link
-       v-for="route in routes.topRouters"
-       :key="route.path"
-       :to="resolvePath(route.path)"
-       v-if="!route.children[0].hidden"
+        v-for="route in routes.topRouters"
+        :key="route.path"
+        :to="resolvePath(route.path)"
+        v-if="!route.children[0].hidden"
       >
         <div class="right-content-button">
           <svg-icon :icon-class="route.children[0].meta.icon"></svg-icon>
-          {{route.children[0].name}}
+          {{ route.children[0].name }}
         </div>
       </app-link>
-      <div class="right-username">{{showName}}</div>
+      <div class="right-username">{{ showName }}</div>
       <div class="right-menu">
         <el-dropdown class="avatar-container" trigger="click">
           <div class="avatar-wrapper">
-            <el-avatar :src="avatar ? imageUrl + avatar : defaultAvatar" icon="el-icon-user-solid"></el-avatar>
+            <el-avatar
+              :src="avatar ? imageUrl + avatar : defaultAvatar"
+              icon="el-icon-user-solid"
+            ></el-avatar>
             <i class="el-icon-caret-bottom" />
           </div>
           <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -30,7 +30,7 @@
             >
               <el-dropdown-item>
                 <svg-icon :icon-class="route.children[0].meta.icon"></svg-icon>
-                {{route.children[0].name}}
+                {{ route.children[0].name }}
               </el-dropdown-item>
             </app-link>
             <el-dropdown-item divided @click.native="logout">
@@ -39,30 +39,32 @@
           </el-dropdown-menu>
         </el-dropdown>
       </div>
-
     </div>
-
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
-import Icon from '@/components/Icon/Icon.vue'
-import AppLink from './Sidebar/Link'
-import store from "@/store"
-import {isExternal} from "@/utils/validate";
+import { mapGetters } from "vuex";
+import Breadcrumb from "@/components/Breadcrumb";
+import Hamburger from "@/components/Hamburger";
+import Icon from "@/components/Icon/Icon.vue";
+import AppLink from "./Sidebar/Link";
+import store from "@/store";
+import { isExternal } from "@/utils/validate";
 import path from "path";
 
 export default {
   data() {
     return {
       isShow: true,
-      activeIndex: '1',
-      imageUrl: process.env.VUE_APP_BASE_API + '/view/thumbnail?jmal-token=' + this.$store.state.user.token + '&id=',
-      defaultAvatar: require('../../assets/img/default-avatar.png')
-    }
+      activeIndex: "1",
+      imageUrl:
+        process.env.VUE_APP_BASE_API +
+        "/view/thumbnail?jmal-token=" +
+        this.$store.state.user.token +
+        "&id=",
+      defaultAvatar: require("../../assets/img/default-avatar.png")
+    };
   },
   components: {
     Icon,
@@ -71,52 +73,47 @@ export default {
     AppLink
   },
   computed: {
-    ...mapGetters([
-      'sidebar',
-      'avatar',
-      'showName'
-    ]),
+    ...mapGetters(["sidebar", "avatar", "showName"]),
     routes() {
-      let routes = {}
-      let topRouters = []
-      let rightTopRoutes = []
+      let routes = {};
+      let topRouters = [];
+      let rightTopRoutes = [];
       this.$router.options.routes.forEach(route => {
-        if(route.menuType === 3){
-          topRouters.push(route)
+        if (route.menuType === 3) {
+          topRouters.push(route);
         }
-        if(route.menuType === 4){
-          rightTopRoutes.push(route)
+        if (route.menuType === 4) {
+          rightTopRoutes.push(route);
         }
-      })
-      routes.topRouters = topRouters
-      routes.rightTopRoutes = rightTopRoutes
-      return routes
-    },
+      });
+      routes.topRouters = topRouters;
+      routes.rightTopRoutes = rightTopRoutes;
+      return routes;
+    }
   },
   mounted() {
     this.isShow = this.$pc;
   },
   methods: {
-    handleSelect(key, keyPath) {
-    },
+    handleSelect(key, keyPath) {},
     toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
+      this.$store.dispatch("app/toggleSideBar");
     },
     async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+      await this.$store.dispatch("user/logout");
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     },
     resolvePath(routePath) {
       if (isExternal(routePath)) {
-        return routePath
+        return routePath;
       }
       if (isExternal(this.basePath)) {
-        return this.basePath
+        return this.basePath;
       }
-      return path.resolve(this.basePath, routePath)
+      return path.resolve(this.basePath, routePath);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -125,18 +122,18 @@ export default {
   overflow: hidden;
   position: relative;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
     line-height: 46px;
     height: 100%;
     float: left;
     cursor: pointer;
-    transition: background .3s;
-    -webkit-tap-highlight-color:transparent;
+    transition: background 0.3s;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
-      background: rgba(0, 0, 0, .025)
+      background: rgba(0, 0, 0, 0.025);
     }
   }
 
@@ -156,7 +153,6 @@ export default {
       line-height: 50px;
       margin: 0 10px;
     }
-
   }
 
   .right-menu {
@@ -177,10 +173,10 @@ export default {
 
       &.hover-effect {
         cursor: pointer;
-        transition: background .3s;
+        transition: background 0.3s;
 
         &:hover {
-          background: rgba(0, 0, 0, .025)
+          background: rgba(0, 0, 0, 0.025);
         }
       }
     }
