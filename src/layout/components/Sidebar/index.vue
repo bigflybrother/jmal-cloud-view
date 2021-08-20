@@ -8,8 +8,8 @@
         :background-color="variables.menuBg"
         :text-color="variables.menuText"
         :unique-opened="false"
-        :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
+        :active-text-color="'#0cc5ae'"
         mode="vertical"
       >
         <sidebar-item

@@ -9,13 +9,6 @@
           <svg-icon icon-class="jmal-cloud" />
           <span>特赞6.0</span>
         </div>
-        <div class="share-header-content sharer">
-          <span
-            ><span class="user">{{ sharer.showName }}</span
-            >的分享</span
-          >
-          <el-avatar :src="sharer.avatar"></el-avatar>
-        </div>
       </div>
       <el-divider class="header-location"></el-divider>
       <el-breadcrumb class="app-breadcrumb" separator="" v-if="!linkFailed">
