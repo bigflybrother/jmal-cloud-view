@@ -1,9 +1,8 @@
 {
-  "name": "jmal-cloud-view",
-  "version": "2.2.34",
+  "name": "tezign",
+  "version": "0.1",
   "description": "特赞6.0",
-  "author": "Jmal <zhushilun084@163.com>",
-  "license": "MIT",
+  "author": "158367670@qq.com",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build:prod": "vue-cli-service build",

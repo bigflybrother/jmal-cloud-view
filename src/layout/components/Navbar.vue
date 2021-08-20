@@ -1,6 +1,11 @@
 <template>
   <div class="navbar">
     <div class="right-content">
+      <hamburger
+        :is-active="sidebar.opened"
+        class="hamburger-container"
+        @toggleClick="toggleSideBar"
+      />
       <app-link
         v-for="route in routes.topRouters"
         :key="route.path"

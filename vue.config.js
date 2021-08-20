@@ -7,38 +7,14 @@ function resolve(dir) {
 
 const name = '特赞6.0' // page title
 
-//如果您的端口设置为80，
-//使用管理员权限执行命令行。
-//例如，Mac：sudo npm run
-//您可以通过以下方法更改端口：
-// port = 9528 npm run dev或npm run dev --port = 9528
-const port = process.env.port || process.env.npm_config_port || 9528 // dev port
+const port = process.env.port || process.env.npm_config_port || 8888 // dev port
 
 //所有配置项说明均可在https://cli.vuejs.org/config/中找到
 
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 
-// let monacoLanguages = []
-// const modulesFiles = require.context("monaco-languages/release/dev/", true, /\.js$/)
-// modulesFiles.keys().reduce((modules, modulePath) => {
-//   const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, "$1");
-//   if(moduleName.indexOf('contribution') === -1){
-//     monacoLanguages.push(moduleName.replace(/([/][^/]+)$/, ""))
-//   }
-//   // const value = modulesFiles(modulePath);
-//   // modules[moduleName] = value.default;
-//   // return modules;
-// }, {});
 
 module.exports = {
-
-  /**
-    *如果您打算在子路径下部署网站，则需要设置publicPath，
-    *例如GitHub Pages。如果您打算将网站部署到https://foo.github.io/bar/，
-    *然后publicPath应该设置为“ / bar /”。
-    *在大多数情况下，请使用'/'！
-    *详细信息：https://cli.vuejs.org/config/#publicpath
-  */
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
