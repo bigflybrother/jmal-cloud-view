@@ -2,9 +2,10 @@ FROM node:12 as builder
 
 WORKDIR /app
 COPY ./ /app/
-RUN npm install
+RUN npm install --registry https://registry.npm.taobao.org
 
-RUN npm run build:prod
+
+RUN npm run build
 
 FROM nginx:1.16.1
 
