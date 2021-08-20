@@ -5,7 +5,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const name = '特赞云' // page title
+const name = '特赞6.0' // page title
 
 //如果您的端口设置为80，
 //使用管理员权限执行命令行。
@@ -53,7 +53,7 @@ module.exports = {
     },
     proxy: {
       [process.env.VUE_APP_BASE_API]: {
-        target: 'https://10.47.51.221:8080',
+        target: 'http://10.47.61.58:8080/api',
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''

@@ -15,7 +15,7 @@
       >
         <div class="title-container">
           <h3 v-if="!initialize" class="title">
-            <span>特赞云</span>
+            <span>特赞6.0</span>
           </h3>
           <h3 v-if="initialize" class="title">创建管理员</h3>
         </div>

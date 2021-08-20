@@ -1,6 +1,6 @@
 import { login, logout, getInfo } from '@/api/user'
 import menuApi from '@/api/menu'
-import { getToken, setToken, getConsumerId, setConsumerId, removeToken, removeConsumerId , setRememberName, removeRememberName } from '@/utils/auth'
+import { getToken, setToken, getConsumerId, setConsumerId, removeToken, removeConsumerId, setRememberName, removeRememberName } from '@/utils/auth'
 import { resetRouter } from '@/router'
 import router from '@/router'
 import Layout from '@/layout'
@@ -39,10 +39,10 @@ const mutations = {
   SET_USERID: (state, userId) => {
     state.userId = userId
   },
-  SET_MENU_LIST:(state,menuList) => {
+  SET_MENU_LIST: (state, menuList) => {
     state.menuList = menuList;
   },
-  SET_USER_INFO:(state,userInfo) => {
+  SET_USER_INFO: (state, userInfo) => {
     state.userInfo = userInfo;
   }
 }
@@ -50,9 +50,23 @@ const mutations = {
 const actions = {
 
   async setMenuList({ commit, state }) {
-    return new Promise( (resolve,reject) => {
-      menuApi.menuTree({userId: state.userId}).then((res) => {
-        state.menuList = getMenuTree(res.data);
+    return new Promise((resolve, reject) => {
+      menuApi.menuTree({ userId: state.userId }).then((res) => {
+        // state.menuList = getMenuTree(res.data);
+        state.menuList = getMenuTree([{
+          "id": "5ffc36b89a2c787ef115f97a",
+          "parentId": "",
+          "name": "home",
+          "authority": "",
+          "path": "/",
+          "component": "/home/index",
+          "icon": "ziyuan",
+          "sortNumber": 0,
+          "menuType": 0,
+          "hide": false,
+          "createTime": "2021-01-11 19:30:00",
+          "updateTime": "2021-01-13 17:26:42"
+        }]);
         commit('SET_MENU_LIST', state.menuList);
         resetRouter(state.menuList)
         router.options.routes = router.options.routes.concat(state.menuList);
@@ -60,7 +74,7 @@ const actions = {
       }).catch(error => {
         reject(error)
       });
-    } )
+    })
   },
 
   // user login
@@ -73,7 +87,7 @@ const actions = {
         setToken(data.token)
         commit('SET_USERID', data.userId)
         setConsumerId(data.userId)
-        if(rememberMe){
+        if (rememberMe) {
           setRememberName(username)
         } else {
           removeRememberName()
@@ -142,19 +156,19 @@ function getMenuTree(menuList) {
   menuList = menuList.filter(menu => menu.menuType !== 1)
   return menuList.map(menu => {
     let router = {}
-    if(menu.children && menu.children.length){
-      router.meta = {title: menu.name, icon: menu.icon, menuType: menu.menuType}
+    if (menu.children && menu.children.length) {
+      router.meta = { title: menu.name, icon: menu.icon, menuType: menu.menuType }
       router.hidden = menu.hide
       router.children = findChildren(menu.children)
       router.menuType = menu.menuType
     }
-    if(menu.component && menu.component.length > 0) {
+    if (menu.component && menu.component.length > 0) {
       router.children = [
         {
           path: '',
           name: menu.name,
           component: loadView(menu.component),
-          meta: {title: menu.name, icon: menu.icon, menuType: menu.menuType},
+          meta: { title: menu.name, icon: menu.icon, menuType: menu.menuType },
           hidden: menu.hide
         }
       ]
@@ -166,7 +180,7 @@ function getMenuTree(menuList) {
   })
 }
 
-function findChildren(childrenMenu){
+function findChildren(childrenMenu) {
   let children = []
   childrenMenu = childrenMenu.filter(menu => menu.menuType !== 1)
   childrenMenu.forEach(menu => {
@@ -174,12 +188,12 @@ function findChildren(childrenMenu){
       path: menu.path,
       name: menu.name,
       component: !menu.component || menu.component.length === 0 ? ParentView : loadView(menu.component),
-      meta: {title: menu.name, icon: menu.icon, menuType: menu.menuType},
+      meta: { title: menu.name, icon: menu.icon, menuType: menu.menuType },
       hidden: menu.hide,
       menuType: menu.menuType
     }
-    if(menu.children && menu.children.length){
-      if(!menu.component || menu.component.length === 0){
+    if (menu.children && menu.children.length) {
+      if (!menu.component || menu.component.length === 0) {
         router.children = findChildren(menu.children)
       }
     }

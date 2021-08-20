@@ -7,16 +7,14 @@
         class="sidebar-logo-link"
         to="/"
       >
-        <!--<img v-if="logo" :src="logo" class="sidebar-logo">-->
-        <svg-icon class="sidebar-logo" icon-class="jmal-cloud"></svg-icon>
+        <img src="https://static.tezign.com/logo.png" class="sidebar-logo" />
         <h1 class="sidebar-title">{{ title }}</h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <!--<img v-if="logo" :src="logo" class="sidebar-logo">-->
-        <svg-icon
+        <img
+          src="https://static.tezign.com/logo.png"
           class="sidebar-logo-expand"
-          icon-class="jmal-cloud"
-        ></svg-icon>
+        />
         <h1 class="sidebar-title">{{ title }}</h1>
       </router-link>
     </transition>
@@ -34,7 +32,7 @@ export default {
   },
   data() {
     return {
-      title: "特赞云"
+      title: "特赞6.0"
     };
   }
 };

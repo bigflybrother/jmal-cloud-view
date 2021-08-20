@@ -68,7 +68,7 @@
       </div>
       <div>
         <div class="token-title-desc">
-          您可以使用这些以生成的令牌来操作 特赞云 API。
+          您可以使用这些以生成的令牌来操作 特赞6.0 API。
         </div>
         <el-divider></el-divider>
         <div>

@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '特赞云',
+  title: '特赞6.0',
 
   /**
    * @type {boolean} true | false

@@ -7,7 +7,7 @@
       <div class="share-header">
         <div class="share-header-content logo">
           <svg-icon icon-class="jmal-cloud" />
-          <span>特赞云</span>
+          <span>特赞6.0</span>
         </div>
         <div class="share-header-content sharer">
           <span
