@@ -27,11 +27,6 @@
             @click="clickFileType(null, {})"
           />
           <van-cell
-            title="收藏"
-            icon="star-o"
-            @click="clickFileType(null, { isFavorite: true })"
-          />
-          <van-cell
             title="图片"
             icon="photo-o"
             @click="clickFileType('image', { isFolder: false })"
