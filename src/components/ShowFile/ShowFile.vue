@@ -59,7 +59,7 @@
               <a @click.prevent="lastLink()">
                 <svg-icon
                   icon-class="back"
-                  style="font-size: 24px;margin-left: 20px;"
+                  style="font-size: 24px;margin-left: 20px;color:#0cc5ae"
                 />&nbsp;</a
               >
             </el-tooltip>
