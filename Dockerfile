@@ -4,7 +4,7 @@ WORKDIR /app
 COPY ./ /app/
 RUN npm install
 
-RUN npm run build
+RUN npm run build:prod
 
 FROM nginx:1.16.1
 
