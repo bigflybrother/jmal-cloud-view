@@ -3,7 +3,7 @@
 set -x
 set -e
 
-absolute_path="/etc/nginx/nginx.conf"
+absolute_path="/usr/local/nginx/conf/nginx.conf"
 
 mv ${absolute_path} ${absolute_path}.old
 cat ${absolute_path}.old |
