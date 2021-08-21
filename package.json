@@ -7,7 +7,7 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "docker:build": "docker build -t ui . ",
-    "docker:run": "docker build -t ui . && docker run -d -p 8888:80 -e API_SERVER_URL=http://10.47.61.58:8080/api --name ui ui",
+    "docker:run": "docker build -t ui . && docker run -d -p 8888:80 -e API_SERVER_URL=http://10.47.55.33:8080 --name ui ui",
     "docker:stop": "docker stop ui && docker rm ui"
   },
   "dependencies": {

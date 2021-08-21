@@ -70,7 +70,7 @@
       v-show="!grid && !linkFailed"
       ref="fileListTable"
       v-loading="tableLoading"
-      style="width: 100%;margin: 20px 0 0 0;"
+      style="width: 100%; margin: 20px 0 0 0"
       empty-text="无文件"
       :data="fileList"
       row-key="id"
@@ -266,10 +266,15 @@
             :key="item.id"
           >
             <div
-              class="grid-time van-grid-item__content van-grid-item__content--center van-grid-item__content--square"
+              class="
+                grid-time
+                van-grid-item__content
+                van-grid-item__content--center
+                van-grid-item__content--square
+              "
               :style="{
                 background: indexList.includes(index) ? '#baebff91' : '',
-                cursor: indexList.length > 0 ? 'default' : 'pointer'
+                cursor: indexList.length > 0 ? 'default' : 'pointer',
               }"
               @mouseover="gridItemHover(item, index)"
               @mouseout="gridItemOut(item, index)"
@@ -362,7 +367,7 @@ export default {
     AudioPreview,
     VideoPreview,
     ImageViewer,
-    SimTextPreview
+    SimTextPreview,
   },
   data() {
     return {
@@ -384,7 +389,7 @@ export default {
         pageIndex: 1,
         pageSize: 256,
         total: 0,
-        pageSizes: [10, 20, 30, 40, 50]
+        pageSizes: [10, 20, 30, 40, 50],
       },
       indexList: [],
       clientHeight: 500,
@@ -393,69 +398,67 @@ export default {
         {
           name: "",
           label: "",
-          index: 0
+          index: 0,
         },
         {
           name: "",
           label: "",
-          index: 1
+          index: 1,
         },
         {
           name: "name",
           label: "名称",
           sortable: true,
-          index: 2
+          index: 2,
         },
         {
           name: "",
           label: "",
-          index: 3
+          index: 3,
         },
         {
           name: "",
           label: "",
           more: true,
-          index: 4
+          index: 4,
         },
         {
           name: "size",
           label: "大小",
           sortable: true,
-          index: 5
+          index: 5,
         },
         {
           name: "updateDate",
           label: "修改日期",
           sortable: true,
-          index: 6
-        }
+          index: 6,
+        },
       ],
       isJustHideMenus: false,
       menusIsMultiple: false,
       menus: [],
       singleMenus: [
-        { iconClass: "menu-open", label: "打开", operation: "open" },
         { iconClass: "menu-download", label: "下载", operation: "download" },
         {
           iconClass: "menu-fuzhi",
           label: "复制下载连接",
-          operation: "copyDownloadUrl"
-        }
+          operation: "copyDownloadUrl",
+        },
       ],
       singleMenusEdit: [
-        { iconClass: "menu-open", label: "打开", operation: "open" },
         { iconClass: "menu-download", label: "下载", operation: "download" },
         {
           iconClass: "menu-fuzhi",
           label: "复制下载连接",
-          operation: "copyDownloadUrl"
-        }
+          operation: "copyDownloadUrl",
+        },
       ],
       multipleMenus: [
-        { iconClass: "menu-download", label: "下载", operation: "download" }
+        { iconClass: "menu-download", label: "下载", operation: "download" },
       ],
       multipleRightMenus: [
-        { iconClass: "menu-download", label: "下载", operation: "download" }
+        { iconClass: "menu-download", label: "下载", operation: "download" },
       ],
       rowContextData: {},
       selectRowData: [],
@@ -471,7 +474,7 @@ export default {
       directoryTreeProps: {
         label: "name",
         children: "children",
-        isLeaf: "isLeaf"
+        isLeaf: "isLeaf",
       },
 
       dragLoop: null,
@@ -502,11 +505,11 @@ export default {
       audioPreviewVisible: false,
       showUpdateDateItem: this.$pc, // 列表模式下是否显示修改时间
       showSizeItem: this.$pc, // 列表模式下是否显示文件大小
-      sharer: {} //分享者信息
+      sharer: {}, //分享者信息
     };
   },
   computed: {
-    ...mapGetters(["name"])
+    ...mapGetters(["name"]),
   },
   created() {
     this.getFileList();
@@ -515,7 +518,7 @@ export default {
     Bus.$on("fileSuccess", () => {
       this.getFileList();
     });
-    Bus.$on("clickMore", selectRowData => {
+    Bus.$on("clickMore", (selectRowData) => {
       this.selectRowData = selectRowData;
       this.preliminaryRowData();
     });
@@ -547,10 +550,10 @@ export default {
     // 注册一个局部的自定义指令 v-focus
     focus: {
       // 指令的定义
-      inserted: function(el) {
+      inserted: function (el) {
         // 聚焦元素
         el.querySelector("input").focus();
-      }
+      },
     },
     resize: {
       // 指令的名称
@@ -570,8 +573,8 @@ export default {
       },
       unbind(el) {
         clearInterval(el.__vueSetInterval__);
-      }
-    }
+      },
+    },
   },
   methods: {
     loadClientHeight() {
@@ -584,7 +587,7 @@ export default {
     gridItemOut(item, index) {
       this.gridHoverIntermediate = -1;
       const _this = this;
-      setTimeout(function() {
+      setTimeout(function () {
         if (_this.gridHoverIntermediate !== _this.gridHoverItemIndex) {
           _this.gridHoverItemIndex = -1;
         }
@@ -607,7 +610,7 @@ export default {
     gridItemClick(row, e) {
       const elPath = e.path || (e.composedPath && e.composedPath());
       let findIndex = elPath.findIndex(
-        el => el.className === "grid-item-checkbox van-checkbox"
+        (el) => el.className === "grid-item-checkbox van-checkbox"
       );
       if (findIndex > -1) {
         return;
@@ -626,8 +629,9 @@ export default {
       }
     },
     containerResize() {
-      let clientWidth = document.querySelector(".dashboard-container")
-        .clientWidth;
+      let clientWidth = document.querySelector(
+        ".dashboard-container"
+      ).clientWidth;
       this.gridColumnNum = Math.round((clientWidth - 10) / 135);
       this.gridColumnWidth =
         (clientWidth - 11 * this.gridColumnNum) / this.gridColumnNum - 4.5;
@@ -679,9 +683,9 @@ export default {
           share: this.shareId,
           fileId: fileId,
           pageIndex: this.pagination.pageIndex,
-          pageSize: this.pagination.pageSize
+          pageSize: this.pagination.pageSize,
         })
-        .then(res => {
+        .then((res) => {
           this.isLoading = false;
           this.fileList = res.data;
           this.loadClientHeight();
@@ -694,7 +698,7 @@ export default {
             this.linkFailed = false;
           });
         })
-        .catch(e => {});
+        .catch((e) => {});
     },
     getFileList(pagination, overload) {
       this.tableLoading = true;
@@ -702,9 +706,9 @@ export default {
         .accessShare({
           share: this.shareId,
           pageIndex: this.pagination.pageIndex,
-          pageSize: this.pagination.pageSize
+          pageSize: this.pagination.pageSize,
         })
-        .then(res => {
+        .then((res) => {
           this.isLoading = false;
           if (Object.getPrototypeOf(res.data) === String.prototype) {
             this.prompt = "该链接已失效";
@@ -714,7 +718,7 @@ export default {
               item.index = index;
             });
             if (this.fileList.length > 0) {
-              api.getSharer({ userId: this.fileList[0].userId }).then(res => {
+              api.getSharer({ userId: this.fileList[0].userId }).then((res) => {
                 this.sharer = res.data;
               });
             }
@@ -772,7 +776,7 @@ export default {
       let folderSize = 0;
       let fileSize = 0;
       let totalSize = 0;
-      fileList.forEach(fileInfo => {
+      fileList.forEach((fileInfo) => {
         if (fileInfo.isFolder) {
           folderSize += 1;
         } else {
@@ -818,7 +822,7 @@ export default {
         this.indexList.push(item.index);
       }
 
-      row.forEach(r => {
+      row.forEach((r) => {
         this.$refs.fileListTable.toggleRowSelection(r, true);
       });
 
@@ -981,7 +985,7 @@ export default {
     hide() {
       const that = this;
       this.isJustHideMenus = true;
-      setTimeout(function() {
+      setTimeout(function () {
         that.isJustHideMenus = false;
       }, 100);
     },
@@ -1004,7 +1008,7 @@ export default {
       console.log("downloadFile", copy);
       let totalSize = 0;
       if (this.indexList.length > 0) {
-        this.selectRowData.forEach(item => {
+        this.selectRowData.forEach((item) => {
           totalSize += item.size;
         });
       } else {
@@ -1013,7 +1017,7 @@ export default {
       if (totalSize > 0) {
         let fileIds = [];
         if (this.menusIsMultiple) {
-          this.selectRowData.forEach(value => {
+          this.selectRowData.forEach((value) => {
             fileIds.push(value.id);
           });
         } else {
@@ -1039,28 +1043,28 @@ export default {
       } else {
         this.$message({
           message: "所选文件为空",
-          type: "warning"
+          type: "warning",
         });
       }
     },
     // 复制下载连接
     copyDownloadLink(url) {
       let clipboard = new Clipboard(".menu-option", {
-        text: function() {
+        text: function () {
           return url;
-        }
+        },
       });
-      clipboard.on("success", e => {
+      clipboard.on("success", (e) => {
         this.$message({ message: "复制成功", type: "success", duration: 1000 });
         // 释放内存
         clipboard.destroy();
       });
-      clipboard.on("error", e => {
+      clipboard.on("error", (e) => {
         // 不支持复制
         this.$message({
           message: "该浏览器不支持自动复制",
           type: "warning",
-          duration: 1000
+          duration: 1000,
         });
         clipboard.destroy();
       });
@@ -1107,8 +1111,8 @@ export default {
         // 打开文件
         fileConfig.publicPreview(row.id, this.shareId);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

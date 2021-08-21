@@ -25,39 +25,25 @@ export default {
     return {
       sortable: {
         prop: "updateDate",
-        order: "descending"
+        order: "descending",
       },
       queryCondition: {
-        isFavorite: true
+        isFavorite: true,
       },
       singleMenus: [
-        { iconClass: "menu-open", label: "打开", operation: "open" },
-        { iconClass: "menu-download", label: "下载", operation: "download" }
-        // { iconClass: 'menu-favorite-hover', label: '取消收藏', operation: 'unFavorite' }
+        { iconClass: "menu-download", label: "下载", operation: "download" },
       ],
       singleMenusEdit: [
-        { iconClass: "menu-open", label: "打开", operation: "open" },
-        { iconClass: "menu-download", label: "下载", operation: "download" }
-        // { iconClass: 'menu-favorite-hover', label: '取消收藏', operation: 'unFavorite' }
+        { iconClass: "menu-download", label: "下载", operation: "download" },
       ],
       multipleMenus: [
         { iconClass: "menu-download", label: "下载", operation: "download" },
-        {
-          iconClass: "menu-favorite-hover",
-          label: "取消收藏",
-          operation: "unFavorite"
-        }
       ],
       multipleRightMenus: [
         { iconClass: "menu-download", label: "下载", operation: "download" },
-        {
-          iconClass: "menu-favorite-hover",
-          label: "取消收藏",
-          operation: "unFavorite"
-        }
-      ]
+      ],
     };
-  }
+  },
 };
 </script>
 

@@ -90,7 +90,7 @@
         <el-button
           :loading="loading"
           type="primary"
-          style="width:100%;margin: 30px 0;"
+          style="width: 100%; margin: 30px 0"
           @click.native.prevent="handleLogin"
           >{{ initialize ? "创建" : "登录" }}</el-button
         >
@@ -139,24 +139,24 @@ export default {
     return {
       webstieRecord: {
         copyright: "Copyright © 2020 Journey Magical AL",
-        recordPermissionNum: '"鄂 ICP 备 2020021454 号 - 1"'
+        recordPermissionNum: '"鄂 ICP 备 2020021454 号 - 1"',
       },
       loginForm: {
         username: "",
         password: "",
         rememberMe: false,
-        confirmPassword: ""
+        confirmPassword: "",
       },
       loginRules: {
         username: [
-          { required: true, trigger: "blur", validator: validateUsername }
+          { required: true, trigger: "blur", validator: validateUsername },
         ],
         password: [
-          { required: true, trigger: "blur", validator: validatePassword }
+          { required: true, trigger: "blur", validator: validatePassword },
         ],
         confirmPassword: [
-          { required: true, trigger: "blur", validator: confirmPassword }
-        ]
+          { required: true, trigger: "blur", validator: confirmPassword },
+        ],
       },
       loading: false,
       passwordType: "password",
@@ -166,23 +166,23 @@ export default {
         background: "url(" + require("@/assets/img/login-bg.png") + ")",
         width: "100%",
         height: "100%",
-        position: "absolute"
-      }
+        position: "absolute",
+      },
     };
   },
   watch: {
     $route: {
-      handler: function(route) {
+      handler: function (route) {
         this.redirect = route.query && route.query.redirect;
         if (route.query.path) {
           this.redirect += `&path=${route.query.path}`;
         }
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   mounted() {
-    hasUser().then(data => {
+    hasUser().then((data) => {
       if (data.count < 1) {
         this.initialize = true;
       }
@@ -194,9 +194,9 @@ export default {
       this.loginForm.rememberMe = true;
     }
 
-    getWebstieRecord().then(res => {
-      this.webstieRecord = res.data;
-    });
+    // getWebstieRecord().then(res => {
+    //   this.webstieRecord = res.data;
+    // });
   },
   methods: {
     showPwd() {
@@ -210,7 +210,7 @@ export default {
       });
     },
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
+      this.$refs.loginForm.validate((valid) => {
         if (valid) {
           if (this.initialize) {
             // 初始化
@@ -229,7 +229,7 @@ export default {
               .then(() => {
                 this.$store
                   .dispatch("user/setMenuList")
-                  .then(res => {
+                  .then((res) => {
                     console.log(this.redirect);
                     this.$router.push({ path: this.redirect || "/" });
                     this.loading = false;
@@ -249,8 +249,8 @@ export default {
     },
     validUsername() {
       return true;
-    }
-  }
+    },
+  },
 };
 </script>
 
